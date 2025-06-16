@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{.Title}}</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        }
+        div.banner a:visited, a:link {
+            text-decoration: none;
+            color: black;
+        }
+        nav a:visited, a:link {
+            text-decoration: none;
+            color: blue;
+        }
+        a[href*="/source/"] {
+            text-decoration: none;
+            color: black;
+        }
+       .brutal-grid {
+            display: grid;
+            grid-auto-flow: row;
+            grid-template-columns: repeat(3, 1fr);
+        }
+        div.about {
+            max-width: 50%;
+            margin-right: auto;
+        }
+
+        li {
+            padding-bottom: 0.5rem;
+        }
+
+        .login-link {
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: 1em;
+        }
+
+        @media (max-width: 800px) {
+            .brutal-grid {
+                display: grid;
+                grid-auto-flow: row;
+                grid-template-columns: repeat(1, 1fr);
+            }
+            div.about {
+                max-width: 100%;
+                margin: auto;
+            }
+            .banner {
+                padding-top: 3em;
+            }
+        }
+
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #000;
+                color: #e8e6e3;
+            }
+            div.banner a:visited, a:link {
+                text-decoration: none;
+                color: white;
+            }
+            nav a:visited, a:link {
+                text-decoration: none;
+                color: #3391ff;
+            }
+            a:link {
+                color: #3391ff;
+            }
+            a:visited {
+                color: #ba55d3;
+            }
+            a[href*="/source/"] {
+                text-decoration: none;
+                color: white;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="banner"><h1>{{.Title}}</h1></div>
+        <aside>Last updated on {{formatTime .LastUpdated}}</aside>
+    </header>
+    <br>
+    <div class="brutal-grid">
+        {{range .Feeds}}
+        <div>
+            <h3>{{.Title}}</h3>
+            <ul>
+                {{range .Items}}
+                <li>
+                    <a href="{{.Link}}">{{.Title}}</a>
+                    <small>{{formatTime .PublishedAt}}</small>
+                </li>
+                {{end}}
+            </ul>
+        </div>
+        {{end}}
+    </div>
+</body>
+</html>
