@@ -21,13 +21,8 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Setup Go
-      uses: actions/setup-go@v5
-      with:
-        go-version: '1.24'
-
-    - name: Cache Go build + modules
-      uses: actions/cache@v4
+    - name: Restore Go cache
+      uses: actions/cache/restore@v4
       with:
         path: |
           ~/.cache/go-build
@@ -35,6 +30,11 @@ jobs:
         key: go-cache-${{ hashFiles('**/go.sum') }}-${{ hashFiles('**/*.go') }}
         restore-keys: |
           go-cache-
+
+    - name: Setup Go
+      uses: actions/setup-go@v5
+      with:
+        go-version: '1.24'
 
     - name: Cache built binary
       id: cache-avui
@@ -55,10 +55,17 @@ jobs:
       with:
         path: './static'
 
+    - name: Save Go cache
+      uses: actions/cache/save@v4
+      with:
+        path: |
+          ~/.cache/go-build
+          ~/go/pkg/mod
+        key: go-cache-${{ hashFiles('**/go.sum') }}-${{ hashFiles('**/*.go') }}
+
   deploy:
     needs: build
     runs-on: ubuntu-latest
-
     steps:
     - name: Deploy to GitHub Pages
       uses: actions/deploy-pages@v4
