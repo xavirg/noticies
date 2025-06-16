@@ -35,7 +35,6 @@ jobs:
         key: go-cache-${{ hashFiles('**/go.sum') }}-${{ hashFiles('**/*.go') }}
         restore-keys: |
           go-cache-
-        retention-days: 30
 
     - name: Cache built binary
       id: cache-avui
@@ -43,7 +42,6 @@ jobs:
       with:
         path: ./avui
         key: avui-${{ hashFiles('**/*.go') }}
-        retention-days: 30
 
     - name: Build (only if cache miss)
       if: steps.cache-avui.outputs.cache-hit != 'true'
