@@ -18,6 +18,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+    - name: Run a script
+      run: |
+          echo "Running at $(date)"
     - name: Checkout code
       uses: actions/checkout@v4
 
