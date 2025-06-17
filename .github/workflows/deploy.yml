@@ -2,7 +2,7 @@ name: Build and Deploy
 
 on:
   schedule:
-    - cron: "0,30 4-23 * * *"
+    - cron: "15,45 4-23 * * *"
   workflow_dispatch:
 
 permissions:
