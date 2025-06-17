@@ -96,7 +96,7 @@
                 {{range .Items}}
                 <li>
                     <a href="{{.Link}}">{{.Title}}</a>
-                    <small>{{formatTime .PublishedAt}}</small>
+                    <small>{{humanTime .PublishedAt}}</small>
                 </li>
                 {{end}}
             </ul>
