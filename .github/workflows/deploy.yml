@@ -18,11 +18,17 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Run a script
+    - name: Show date
       run: |
           echo "Running at $(date)"
+
     - name: Checkout code
       uses: actions/checkout@v4
+
+    - name: Clean previous Go cache
+      run: |
+        rm -rf ~/go/pkg/mod
+        mkdir -p ~/go/pkg/mod
 
     - name: Restore Go cache
       uses: actions/cache/restore@v4
