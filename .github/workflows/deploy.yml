@@ -25,52 +25,21 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Clean previous Go cache
-      run: |
-        rm -rf ~/go/pkg/mod
-        mkdir -p ~/go/pkg/mod
-
-    - name: Restore Go cache
-      uses: actions/cache/restore@v4
-      with:
-        path: |
-          ~/.cache/go-build
-          ~/go/pkg/mod
-        key: go-cache-${{ hashFiles('**/go.sum') }}-${{ hashFiles('**/*.go') }}
-        restore-keys: |
-          go-cache-
-
     - name: Setup Go
       uses: actions/setup-go@v5
       with:
         go-version: '1.24'
 
-    - name: Cache built binary
-      id: cache-avui
-      uses: actions/cache@v4
-      with:
-        path: ./avui
-        key: avui-${{ hashFiles('**/*.go') }}
-
-    - name: Build (only if cache miss)
-      if: steps.cache-avui.outputs.cache-hit != 'true'
+    - name: Build
       run: go build -o avui ./cmd/avui
 
     - name: Run
       run: ./avui
 
-    - name: Upload artifact
+    - name: Upload page artifact
       uses: actions/upload-pages-artifact@v3
       with:
         path: './static'
-
-    - name: Save Go cache
-      uses: actions/cache/save@v4
-      with:
-        path: |
-          ~/.cache/go-build
-          ~/go/pkg/mod
-        key: go-cache-${{ hashFiles('**/go.sum') }}-${{ hashFiles('**/*.go') }}
 
   deploy:
     needs: build
