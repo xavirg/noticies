@@ -13,6 +13,6 @@ feeds:
     time_format: "Mon, 02 Jan 2006 15:04:05 MST"
     order: 2
   - name: "Reuters"
-    url: "https://rss.bloat.cat/?action=display&bridge=ReutersBridge&feed=home%2Ftopnews&format=Mrss"
+    url: "https://rss-bridge.ggc-project.de/?action=display&bridge=ReutersBridge&feed=home%2Ftopnews&format=Mrss"
     time_format: "Mon, 02 Jan 2006 15:04:05 -0700"
     order: 3
