@@ -12,19 +12,7 @@ feeds:
     url: "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/portada"
     time_format: "Mon, 02 Jan 2006 15:04:05 MST"
     order: 2
-  - name: "BBC"
-    url: "https://feeds.bbci.co.uk/news/world/rss.xml"
-    time_format: "Mon, 02 Jan 2006 15:04:05 MST"
-    order: 3
   - name: "Reuters"
     url: "https://rss.bloat.cat/?action=display&bridge=ReutersBridge&feed=home%2Ftopnews&format=Mrss"
     time_format: "Mon, 02 Jan 2006 15:04:05 -0700"
-    order: 4
-  - name: "WSJ"
-    url: "https://feeds.content.dowjones.io/public/rss/RSSWorldNews"
-    time_format: "Mon, 02 Jan 2006 15:04:05 MST"
-    order: 5
-  - name: "324.cat"
-    url: "https://api.3cat.cat/noticies?_format=rss&origen=frontal&frontal=n324-portada-noticia&version=2.0"
-    time_format: "Mon, 02 Jan 2006 15:04:05 -0700"
-    order: 6
+    order: 3
