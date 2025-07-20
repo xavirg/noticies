@@ -12,7 +12,7 @@ feeds:
     url: "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/portada"
     time_format: "Mon, 02 Jan 2006 15:04:05 MST"
     order: 2
-  - name: "Reuters"
-    url: "https://bridge.easter.fr/?action=display&bridge=ReutersBridge&feed=home%2Ftopnews&format=Mrss"
-    time_format: "Mon, 02 Jan 2006 15:04:05 -0700"
+  - name: "BBC"
+    url: "http://feeds.bbci.co.uk/news/world/rss.xml"
+    time_format: "Mon, 02 Jan 2006 15:04:05 MST"
     order: 3
